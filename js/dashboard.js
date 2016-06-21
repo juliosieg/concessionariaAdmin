@@ -9,7 +9,7 @@ function getFacebookCounter(){
 
         $.ajax({
             type: "POST",
-            url: 'funcoesDashboard.php',
+            url: 'funcoes/funcoesDashboard.php',
             data: {funcao: funcao},
             success: function (data) {
             	var result = $.trim(data);
