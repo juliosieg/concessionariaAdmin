@@ -16,7 +16,16 @@
 	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 	<!-- Skin -->
 	<link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
-	
+
+	<!-- jQuery 2.2.0 -->
+	<script src="plugins/jQuery/jQuery-2.2.0.min.js"></script>
+	<!-- Bootstrap 3.3.6 -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="dist/js/app.min.js"></script>
+	<!-- Funções da página de dashboard -->
+	<script src="js/dashboard.js"></script>
+
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 	<div class="wrapper">
@@ -39,9 +48,6 @@
 				<!-- Navbar Right Menu -->
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
-
-
-
 					</ul>
 				</div>
 
@@ -167,7 +173,7 @@
 
 							<div class="info-box-content">
 								<span class="info-box-text">Curtidas na página</span>
-								<span class="info-box-number">41,410</span>
+								<span class="info-box-number" id="contadorFacebook"></span>
 							</div>
 							<!-- /.info-box-content -->
 						</div>
@@ -290,16 +296,11 @@
 		</section>
 
 	</div>
-
-
-	<!-- jQuery 2.2.0 -->
-	<script src="plugins/jQuery/jQuery-2.2.0.min.js"></script>
-	<!-- Bootstrap 3.3.6 -->
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="dist/js/app.min.js"></script>
-
-
 </body>
 </html>
+
+
+
+
+
 
