@@ -27,11 +27,6 @@
     <script src="dist/js/app.min.js"></script>
     <!-- Funções da página de listagem de marcas -->
     <script src="js/listarMarcas.js"></script>
-    <!-- DataTables -->
-    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <!--Bootstrap Notify -->
-    <script src="js/bootstrap-notify-master/bootstrap-notify-master/bootstrap-notify.js"></script>
 
 
 </head>
@@ -112,7 +107,7 @@
                     </li>
 
 
-                    <li class="treeview active">
+                    <li class="treeview">
                         <a href="#">
                             <i class="ion ion-android-star-outline"></i>
                             <span>Marcas</span>
@@ -148,7 +143,7 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="suporte.php">
                             <i class="fa fa-support"></i> <span>Suporte</span>
                         </a>
@@ -166,12 +161,11 @@
             <section class="content-header">
 
                 <h1>
-                    Listagem de Marcas
+                    Suporte
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="ion ion-android-star-outline"></i>WHdev SGC</a></li>
-                    <li>Marcas</li>
-                    <li class="active">Listagem de Marcas</li>
+                    <li><a href="#"><i class="fa fa-support"></i>WHdev SGC</a></li>
+                    <li>Suporte</li>
                 </ol>
             </section>
 
@@ -183,18 +177,28 @@
                         <div class="box">
 
                             <div class="box-body">
-                                <table id="tableMarcas" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th width='10%'>ID</th>
-                                            <th width='80%'>Descrição</th>
-                                            <th width='10%'>Opções</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                    </tbody>
-                                </table>
+                                <p align="center">
+
+
+                                    <img src="images/buoy.png" width="200px" height="200px"/>
+
+                                </p>
+
+                                <div class="panel-group">
+                                  <div class="panel panel-primary class">
+                                    <div class="panel-heading" style="text-align: center; font-size: 20px">Algum problema?
+                                    </div>
+                                    <div class="panel-body">
+                                        <b>Entre em contato por telefone: </b>(54) 8404.4180 <br/>
+                                        <b>Entre em contato por e-mail: </b>suporte@whdev.com.br<br/>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -205,48 +209,13 @@
 
         </div>
 
-        <!--Modal Edição-->
-        <div id="modalEditarMarca" class="modal fade" tabindex="-1" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Editar Marca</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form">
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="idEditarMarca">ID:</label>
-                    <div class="col-sm-2">
-                      <input type="text" class="form-control" id="idEditarMarca">
-                  </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label col-sm-2" for="descricaoEditarMarca">Descrição:</label>
-                <div class="col-sm-10"> 
-                  <input type="text" class="form-control" id="descricaoEditarMarca">
-              </div>
-          </div>
-      </form>
-
-      <div id="erroAlteracaoDescricaoVazia" class="alert alert-danger fade in">
-          <a href="#" class="close alert-close">&times;</a>
-          <strong>Erro!</strong> Valor da descrição não pode ser vazio.
-      </div>
-
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary" onclick="salvarAlteracoes()">Salvar Alterações</button>
-</div>
-</div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 
 
-</body>
-</html>
+
+
+    </body>
+    </html>
 
 
 

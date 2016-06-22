@@ -20,11 +20,10 @@
             $this->result = pg_exec($sql) or die ("Erro ao executar query");
             return $this->result;
         }
-
-        // Salva no array $line resultados retornados
-        function MostrarResultados(){
-            $line = pg_fetch_array($this->result);
-            return $line;
+       
+        function MontarResultados(){  
+            $resultArray = pg_fetch_all($this->result);
+            return $resultArray;
         }
 
         // Numero de linhas retornada na consulta
@@ -43,6 +42,4 @@
             pg_free_result($this->result);
         }
     }
-?>
-
 ?>

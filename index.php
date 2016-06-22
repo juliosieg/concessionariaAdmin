@@ -15,7 +15,7 @@
 	<!-- Theme style -->
 	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 	<!-- Skin -->
-	<link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
+	<link rel="stylesheet" href="dist/css/skins/skin-blue.css">
 
 	<!-- jQuery 2.2.0 -->
 	<script src="plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -27,7 +27,7 @@
 	<script src="js/dashboard.js"></script>
 
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 		<header class="main-header">
 
@@ -140,7 +140,7 @@
 					</li>
 
 					<li>
-						<a href="#">
+						<a href="suporte.php">
 							<i class="fa fa-support"></i> <span>Suporte</span>
 						</a>
 					</li>
