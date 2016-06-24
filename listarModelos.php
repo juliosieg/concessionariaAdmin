@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- Skin -->
         <link rel="stylesheet" href="dist/css/skins/skin-blue.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
 
         <!-- jQuery 2.2.0 -->
         <script src="plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -23,8 +25,16 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js"></script>
-        <!-- Funções da página de dashboard -->
-        <script src="js/dashboard.js"></script>
+        <!-- Funções da página de listagem de modelos -->
+        <script src="js/listarModelos.js"></script>
+        <!-- DataTables -->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+        <!--Bootstrap Notify -->
+        <script src="js/bootstrap-notify-master/bootstrap-notify-master/bootstrap-notify.js"></script>
+        <!-- Bootbox Alert -->
+        <script src="js/bootbox.js"></script>
+
 
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -73,8 +83,8 @@
                     <ul class="sidebar-menu">
                         <li class="header">MENU ADMINISTRATIVO</li>
 
-                        <li class="active">
-                            <a href="#">
+                        <li>
+                            <a href="index.php">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -104,7 +114,7 @@
                         </li>
 
 
-                        <li class="treeview">
+                        <li class="treeview active">
                             <a href="#">
                                 <i class="fa fa-bookmark-o"></i>
                                 <span>Modelos</span>
@@ -112,7 +122,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="#"><i class="fa fa-plus"></i> Novo modelo</a></li>
-                                <li><a href="listarModelos.php"><i class="fa fa-navicon"></i> Listar</a></li>
+                                <li class="active"><a href="listarModelos.php"><i class="fa fa-navicon"></i> Listar</a></li>
                             </ul>
                         </li>
 
@@ -218,159 +228,91 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
+
                     <h1>
-                        Dashboard
+                        Listagem de Modelos
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>WHdev SGC</a></li>
-                        <li class="active">Dashboard</li>
+                        <li><a href="index.php"><i class="fa fa-bookmark-o"></i>WHdev SGC</a></li>
+                        <li class="active">Modelos</li>
+                        <li>Listar Modelos</li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
+                        <div class="col-xs-12">
 
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Total de Visitantes</span>
-                                    <span class="info-box-number" id="contadorVisitas"></span>
+                            <div class="box">
+
+                                <div class="box-body">
+
+                                    <table id="tableModelos" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width='10%'>ID</th>
+                                                <th width='30%'>Descrição</th>
+                                                <th width='25%'>Categoria</th>
+                                                <th width='25%'>Marca</th>
+                                                <th width='10%'>Opções</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
                                 </div>
+                                <!-- /.box-body -->
                             </div>
+                            <!-- /.box -->
                         </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-blue"><i class="fa fa-facebook"></i></span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Curtidas na página</span>
-                                    <span class="info-box-number" id="contadorFacebook"></span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-green"><i class="fa fa-automobile"></i></span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Carros cadastrados</span>
-                                    <span class="info-box-number">35</span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <!-- /.col -->
                     </div>
+                </section>
 
-
-                    <!-- TABLE: LATEST ORDERS -->
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Interesses</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="table-responsive">
-                                <table class="table no-margin">
-                                    <thead>
-                                        <tr>
-                                            <th>Cód. Interesse</th>
-                                            <th>Carro</th>
-                                            <th>Status</th>
-                                            <th>Data</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">101</a></td>
-                                            <td>Ford Fiesta</td>
-                                            <td><span class="label label-success">Respondido</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">20/05/2016</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">102</a></td>
-                                            <td>Ford Focus</td>
-                                            <td><span class="label label-warning">Pendente</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">19/05/2016</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">101</a></td>
-                                            <td>Ford Fiesta</td>
-                                            <td><span class="label label-success">Respondido</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">20/05/2016</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">102</a></td>
-                                            <td>Ford Focus</td>
-                                            <td><span class="label label-warning">Pendente</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">19/05/2016</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">101</a></td>
-                                            <td>Ford Fiesta</td>
-                                            <td><span class="label label-success">Respondido</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">20/05/2016</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">102</a></td>
-                                            <td>Ford Focus</td>
-                                            <td><span class="label label-warning">Pendente</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">19/05/2016</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">102</a></td>
-                                            <td>Ford Focus</td>
-                                            <td><span class="label label-warning">Pendente</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">19/05/2016</div>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Ver todos os interesses</a>
-                        </div>
-                        <!-- /.box-footer -->
-                    </div>
-                    <!-- /.box -->
             </div>
-            <!-- /.col -->
 
-        </section>
+            <!--Modal Edição-->
+            <div id="modalEditarMarca" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Editar Marca</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="idEditarMarca">ID:</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="idEditarMarca">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="descricaoEditarMarca">Descrição:</label>
+                                    <div class="col-sm-10"> 
+                                        <input type="text" class="form-control" id="descricaoEditarMarca">
+                                    </div>
+                                </div>
+                            </form>
 
-    </div>
-</body>
+                            <div id="erroAlteracaoDescricaoVazia" class="alert alert-danger fade in">
+                                <a href="#" class="close alert-close">&times;</a>
+                                <strong>Erro!</strong> Valor da descrição não pode ser vazio.
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" onclick="salvarAlteracoes()">Salvar Alterações</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+
+
+    </body>
 </html>
 
 

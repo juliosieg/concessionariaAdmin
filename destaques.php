@@ -114,7 +114,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="#"><i class="fa fa-plus"></i> Novo modelo</a></li>
-                                <li><a href="#"><i class="fa fa-navicon"></i> Listar</a></li>
+                                <li><a href="listarModelos.php"><i class="fa fa-navicon"></i> Listar</a></li>
                             </ul>
                         </li>
 

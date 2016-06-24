@@ -122,7 +122,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="#"><i class="fa fa-plus"></i> Novo modelo</a></li>
-                                <li><a href="#"><i class="fa fa-navicon"></i> Listar</a></li>
+                                <li><a href="listarModelos.php"><i class="fa fa-navicon"></i> Listar</a></li>
                             </ul>
                         </li>
 
@@ -252,7 +252,7 @@
                                             <label for="descricaoCategoria">Descrição</label>
                                             <input type="text" class="form-control" id="descricaoCategoria" placeholder="Descrição da Categoria">
                                         </fieldset>
-                                        <input type="button" onclick="inserirNovacategorias()" class="btn btn-primary" value="Inserir"/>
+                                        <input type="button" onclick="inserirNovaCategoria()" class="btn btn-primary" value="Inserir"/>
                                     </form>
 
                                     <h3>Listagem de Categorias</h3><br/>
