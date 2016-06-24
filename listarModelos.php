@@ -121,7 +121,7 @@
                                 <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-plus"></i> Novo modelo</a></li>
+                                <li><a href="inserirModelos.php"><i class="fa fa-plus"></i> Novo modelo</a></li>
                                 <li class="active"><a href="listarModelos.php"><i class="fa fa-navicon"></i> Listar</a></li>
                             </ul>
                         </li>
@@ -273,25 +273,39 @@
             </div>
 
             <!--Modal Edição-->
-            <div id="modalEditarMarca" class="modal fade" tabindex="-1" role="dialog">
+            <div id="modalEditarModelo" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Editar Marca</h4>
+                            <h4 class="modal-title">Editar Modelo</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="idEditarMarca">ID:</label>
+                                    <label class="control-label col-sm-2" for="idEditarModelo">ID:</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="idEditarMarca">
+                                        <input type="text" class="form-control" id="idEditarModelo">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="descricaoEditarMarca">Descrição:</label>
+                                    <label class="control-label col-sm-2" for="descricaoEditarModelo">Descrição:</label>
                                     <div class="col-sm-10"> 
-                                        <input type="text" class="form-control" id="descricaoEditarMarca">
+                                        <input type="text" class="form-control" id="descricaoEditarModelo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="categoriaEditarModelo">Categoria:</label>
+                                    <div class="col-sm-10"> 
+                                        <select type="text" class="form-control" id="categoriaEditarModelo">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="marcaEditarModelo">Marca:</label>
+                                    <div class="col-sm-10"> 
+                                        <select type="text" class="form-control" id="marcaEditarModelo">
+                                        </select>
                                     </div>
                                 </div>
                             </form>

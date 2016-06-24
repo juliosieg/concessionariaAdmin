@@ -2,6 +2,15 @@ $(document).ready(function () {
 
     getTodos();
 
+    $("#erroAlteracaoDescricaoVazia").hide();
+
+    //Para que mensagem abra mais do que uma vez, se fechada
+    $(function () {
+        $(document).on('click', '.alert-close', function () {
+            $(this).parent().hide();
+        })
+    });
+
 });
 
 
@@ -13,7 +22,6 @@ function getTodos() {
         data: {funcao: "getTodos"},
         success: function (html) {
             var test = jQuery.parseJSON(html);
-            console.log(test);
             drawTable(test);
 
             $('#tableModelos').DataTable({
@@ -46,13 +54,12 @@ function drawTable(data) {
 }
 
 function drawRow(rowData) {
-    console.log(rowData);
     var row = $("<tr />")
     $("#tableModelos").append(row);
     row.append($("<td width='10%' codigo='" + rowData.id + "'>" + rowData.id + "</td>"));
-    row.append($("<td width='30%'>" + rowData.descricao + "</td>"));
-    row.append($("<td width='25%'>" + rowData.id_categoria + "</td>"));
-    row.append($("<td width='25%'>" + rowData.id_marca + "</td>"));
+    row.append($("<td width='30%'>" + rowData.descmodelo + "</td>"));
+    row.append($("<td width='25%'>" + rowData.desccategoria + "</td>"));
+    row.append($("<td width='25%'>" + rowData.descmarca + "</td>"));
     row.append($("<td width='10%'> \n\
         <input id=btnAlterar type=\"image\" src=\"images/edit.png\" width=\"18px\" height=\"18px\" codigo=" + rowData.id + " onclick=\"alterar($(this).attr('codigo'))\"/> \n\
         <input id=btnExcluir type=\"image\" src=\"images/delete.png\" width=\"18px\" height=\"18px\" codigo=" + rowData.id + " onclick=\"excluir($(this).attr('codigo'))\"/> "));
@@ -110,4 +117,133 @@ function excluir(codigo) {
             }
         }
     });
+}
+
+function alterar(codigo) {
+
+    $('#modalEditarModelo').modal('show');
+    $('#idEditarModelo').attr('disabled', 'true');
+    $('#idEditarModelo').val(codigo);
+
+    buscaCategoriasEdicao();
+    buscaMarcasEdicao();
+
+    pesquisaDadosEdicao(codigo);
+
+}
+
+function buscaCategoriasEdicao() {
+    $.ajax({
+        type: "POST",
+        url: 'funcoes/funcoesCategorias.php',
+        data: {funcao: "getTodas"},
+        success: function (html) {
+            var test = jQuery.parseJSON(html);
+
+            $('#categoriaEditarModelo').find('option').remove();
+
+            $.each(test, function (i, item) {
+                $("#categoriaEditarModelo").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
+            });
+        }
+    });
+}
+
+function buscaMarcasEdicao() {
+    $.ajax({
+        type: "POST",
+        url: 'funcoes/funcoesMarcas.php',
+        data: {funcao: "getTodas"},
+        success: function (html) {
+            var test = jQuery.parseJSON(html);
+
+            $('#marcaEditarModelo').find('option').remove();
+
+            $.each(test, function (i, item) {
+                $("#marcaEditarModelo").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
+            });
+
+        }
+
+    });
+
+}
+
+function pesquisaDadosEdicao(codigo) {
+    $.ajax({
+        type: "POST",
+        url: 'funcoes/funcoesModelos.php',
+        data: {funcao: "pesquisaDadosEdicao", codigo: codigo},
+        success: function (data) {
+            var test = JSON.parse(data);
+
+            $('#descricaoEditarModelo').val(test[0].descricao);
+
+            $("#categoriaEditarModelo option").each(function ()
+            {
+                if ($(this).attr("id") == test[0].id_categoria) {
+                    $(this).attr("selected", "");
+                }
+            });
+
+            $("#marcaEditarModelo option").each(function ()
+            {
+                if ($(this).attr("id") == test[0].id_marca) {
+                    $(this).attr("selected", "");
+                }
+            });
+        }
+    });
+}
+
+function salvarAlteracoes() {
+    var descricao = $("#descricaoEditarModelo").val();
+
+    if (descricao == "" || descricao == null) {
+        $("#erroAlteracaoDescricaoVazia").show();
+    } else {
+        
+        var codigo = $("#idEditarModelo").val();
+        var categoria = $("#categoriaEditarModelo option:selected").attr("id");
+        var marca = $("#marcaEditarModelo option:selected").attr("id");
+
+        $.ajax({
+            type: "POST",
+            url: 'funcoes/funcoesModelos.php',
+            data: {funcao: "salvarAlteracoes", codigo: codigo, descricao: descricao, categoria: categoria, marca: marca},
+            success: function (data) {
+                var test = $.trim(data);
+                if (test == 'OK') {
+                    $('#modalEditarModelo').modal('hide');
+
+                    $("#tableModelos").dataTable().fnClearTable();
+                    $("#tableModelos").dataTable().fnDestroy();
+
+                    getTodos();
+
+                    $.notify({
+                        // options
+                        message: 'Alteração executada com sucesso'
+                    }, {
+                        // settings
+                        type: 'success'
+                    });
+                } else {
+                    $('#modalEditarMarca').modal('hide');
+                    $.notify({
+                        // options
+                        message: 'Erro na alteração: ' + test
+                    }, {
+                        // settings
+                        type: 'danger'
+                    });
+                }
+
+            }
+        });
+
+    }
+
+
+
 }
