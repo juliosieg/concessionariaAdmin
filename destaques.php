@@ -16,8 +16,6 @@
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
         <!-- Skin -->
         <link rel="stylesheet" href="dist/css/skins/skin-blue.css">
-        <!-- DataTables -->
-        <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
 
         <!-- jQuery 2.2.0 -->
         <script src="plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -25,16 +23,10 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js"></script>
-        <!-- Funções da página de listagem de marcas -->
-        <script src="js/listarMarcas.js"></script>
-        <!-- DataTables -->
-        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
-        <!--Bootstrap Notify -->
-        <script src="js/bootstrap-notify-master/bootstrap-notify-master/bootstrap-notify.js"></script>
-        <!-- Bootbox Alert -->
-        <script src="js/bootbox.js"></script>
-
+        <!--Bootstrap File Input -->
+        <script src="plugins/bootstrap-fileinput/js/fileinput.js"></script>
+        <!--Bootstrap File Input Locale -->
+        <script src="plugins/bootstrap-fileinput/js/locales/pt-BR.js"></script>
 
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -126,7 +118,7 @@
                             </ul>
                         </li>
 
-                        <li class="active">
+                        <li>
                             <a href="listarMarcas.php">
                                 <i class="fa fa-shield"></i>
                                 <span>Marcas</span>
@@ -199,8 +191,8 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a href="destaques.php">
+                        <li class="active">
+                            <a href="#">
                                 <i class="fa fa-asterisk"></i> <span>Destaques</span>
                             </a>
                         </li>
@@ -233,97 +225,35 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-
                     <h1>
-                        Marcas
+                        Destaques
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="index.php"><i class="fa fa-shield"></i>WHdev SGC</a></li>
-                        <li class="active">Marcas</li>
+                        <li><a href="index.php"><i class="fa fa-asterisk"></i>WHdev SGC</a></li>
+                        <li class="active">Destaques</li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row">
-                        <div class="col-xs-12">
 
-                            <div class="box">
-
-                                <div class="box-body">
-                                    <form>
-                                        <h3>Inserção de Marcas</h3>
-                                        <fieldset class="form-group">
-                                            <label for="id">Descrição</label>
-                                            <input type="text" class="form-control" id="descricaoMarca" placeholder="Descrição da Marca">
-                                        </fieldset>
-                                        <input type="button" onclick="inserirNovaMarca()" class="btn btn-primary" value="Inserir"/>
-                                    </form>
-
-                                    <h3>Listagem de Marcas</h3><br/>
-
-                                    <table id="tableMarcas" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th width='10%'>ID</th>
-                                                <th width='80%'>Descrição</th>
-                                                <th width='10%'>Opções</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.box-body -->
+                    <div class="panel-group">
+                        <div class="panel panel-primary class">
+                            <div class="panel-body">
+                                <h3> Inserir novo Destaque </h3>
+                                <br/>
+                                <form enctype="multipart/form-data" action="__URL__" method="POST">
+                                    <label class="control-label">Selecionar arquivo</label>
+                                    <input id="input-1a" type="file" class="file" data-show-preview="false">
+                                </form>
                             </div>
-                            <!-- /.box -->
                         </div>
                     </div>
+
+
                 </section>
 
             </div>
-
-            <!--Modal Edição-->
-            <div id="modalEditarMarca" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Editar Marca</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="idEditarMarca">ID:</label>
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control" id="idEditarMarca">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="descricaoEditarMarca">Descrição:</label>
-                                    <div class="col-sm-10"> 
-                                        <input type="text" class="form-control" id="descricaoEditarMarca">
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div id="erroAlteracaoDescricaoVazia" class="alert alert-danger fade in">
-                                <a href="#" class="close alert-close">&times;</a>
-                                <strong>Erro!</strong> Valor da descrição não pode ser vazio.
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" onclick="salvarAlteracoes()">Salvar Alterações</button>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-
-
-
     </body>
 </html>
 

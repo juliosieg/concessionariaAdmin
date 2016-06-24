@@ -5,11 +5,11 @@ $(document).ready(function () {
     $("#erroAlteracaoDescricaoVazia").hide();
 
     //Para que mensagem abra mais do que uma vez, se fechada
-    $(function() {
-       $(document).on('click', '.alert-close', function() {
-           $(this).parent().hide();
-       })
-   });
+    $(function () {
+        $(document).on('click', '.alert-close', function () {
+            $(this).parent().hide();
+        })
+    });
 
 });
 
@@ -26,15 +26,15 @@ function getTodas() {
             drawTable(test);
 
             $('#tableMarcas').DataTable({
-             "paging": true,
-             "lengthChange": true,
-             "searching": true,
-             "ordering": true,
-             "info": true,
-             "autoWidth": true,
-             "pageLength": 5,
-             "lengthMenu": [ 5, 10, 25, 50, 75, 100 ]
-         });
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "pageLength": 5,
+                "lengthMenu": [5, 10, 25, 50, 75, 100]
+            });
         }
     });
 
@@ -69,7 +69,7 @@ function drawRow(rowData) {
 }
 
 
-function alterar(codigo){
+function alterar(codigo) {
 
     $('#modalEditarMarca').modal('show');
     $('#idEditarMarca').attr('disabled', 'true');
@@ -79,7 +79,61 @@ function alterar(codigo){
 
 }
 
-function pesquisaCodigo(codigo){
+function excluir(codigo) {
+
+    bootbox.confirm({
+        title: 'Exclusão',
+        message: 'Tem certeza que deseja excluir a marca de código ' + codigo + '?',
+        buttons: {
+            'cancel': {
+                label: 'Cancelar',
+                className: 'btn-default pull-left'
+            },
+            'confirm': {
+                label: 'Excluir',
+                className: 'btn-danger pull-right'
+            }
+        },
+        callback: function (result) {
+            if (result) {
+                $.ajax({
+                    type: "POST",
+                    url: 'funcoes/funcoesMarcas.php',
+                    data: {funcao: "excluir", codigo: codigo},
+                    success: function (data) {
+                        var test = $.trim(data);
+                        if (test == 'OK') {
+                            $("#tableMarcas").dataTable().fnClearTable();
+                            $("#tableMarcas").dataTable().fnDestroy();
+
+                            getTodas();
+
+                            $.notify({
+                                // options
+                                message: 'Exclusão executada com sucesso'
+                            }, {
+                                // settings
+                                type: 'success'
+                            });
+                        } else {
+                            $.notify({
+                                // options
+                                message: 'Erro na exclusão: ' + test
+                            }, {
+                                // settings
+                                type: 'danger'
+                            });
+                        }
+
+                    }
+                });
+            }
+        }
+    });
+}
+
+
+function pesquisaCodigo(codigo) {
     $.ajax({
         type: "POST",
         url: 'funcoes/funcoesMarcas.php',
@@ -94,9 +148,9 @@ function pesquisaCodigo(codigo){
     });
 }
 
-function salvarAlteracoes(){
+function salvarAlteracoes() {
 
-    if($('#descricaoEditarMarca').val() != null && $('#descricaoEditarMarca').val() != ""){
+    if ($('#descricaoEditarMarca').val() != null && $('#descricaoEditarMarca').val() != "") {
         var descricao = $('#descricaoEditarMarca').val();
         var codigo = $('#idEditarMarca').val();
 
@@ -106,7 +160,7 @@ function salvarAlteracoes(){
             data: {funcao: "salvarAlteracoes", codigo: codigo, descricao: descricao},
             success: function (data) {
                 var test = $.trim(data);
-                if(test == 'OK'){
+                if (test == 'OK') {
                     $('#modalEditarMarca').modal('hide');
 
                     $("#tableMarcas").dataTable().fnClearTable();
@@ -116,30 +170,83 @@ function salvarAlteracoes(){
 
                     $.notify({
                         // options
-                        message: 'Alteração executada com sucesso' 
-                    },{
-                    // settings
-                    type: 'success'
-                });
-                }else{
+                        message: 'Alteração executada com sucesso'
+                    }, {
+                        // settings
+                        type: 'success'
+                    });
+                } else {
                     $('#modalEditarMarca').modal('hide');
                     $.notify({
                         // options
-                        message: 'Erro na alteração: '+test 
-                    },{
-                    // settings
-                    type: 'danger'
-                });
+                        message: 'Erro na alteração: ' + test
+                    }, {
+                        // settings
+                        type: 'danger'
+                    });
                 }
 
             }
         });
 
-    }else{
+    } else {
         $("#erroAlteracaoDescricaoVazia").show();
     }
 
 
+
+}
+
+function inserirNovaMarca() {
+
+    var descricao = $("#descricaoMarca").val();
+
+    if (descricao == null || descricao == "") {
+        $.notify({
+            // options
+            message: 'É necessário inserir uma descrição'
+        }, {
+            // settings
+            type: 'danger'
+        });
+
+    } else {
+
+        $.ajax({
+            type: "POST",
+            url: 'funcoes/funcoesMarcas.php',
+            data: {funcao: "inserir", descricao: descricao},
+            success: function (data) {
+                var test = $.trim(data);
+                if (test == 'OK') {
+                    $("#tableMarcas").dataTable().fnClearTable();
+                    $("#tableMarcas").dataTable().fnDestroy();
+
+                    $("#descricaoMarca").val("");
+
+                    getTodas();
+
+                    $.notify({
+                        // options
+                        message: 'Inserção executada com sucesso'
+                    }, {
+                        // settings
+                        type: 'success'
+                    });
+                } else {
+                    $("#descricaoMarca").val("");
+
+                    $.notify({
+                        // options
+                        message: 'Erro na alteração: ' + test
+                    }, {
+                        // settings
+                        type: 'danger'
+                    });
+                }
+            }
+        });
+    }
 
 }
 
