@@ -136,16 +136,11 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
+                        <li>
+                            <a href="listarCategorias.php">
                                 <i class="fa fa-motorcycle"></i>
                                 <span>Categorias</span>
-                                <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-plus"></i> Nova categoria</a></li>
-                                <li><a href="#"><i class="fa fa-navicon"></i> Listar</a></li>
-                            </ul>
                         </li>
 
                         <li class="treeview">

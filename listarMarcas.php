@@ -145,16 +145,11 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
+                        <li>
+                            <a href="listarCategorias.php">
                                 <i class="fa fa-motorcycle"></i>
                                 <span>Categorias</span>
-                                <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-plus"></i> Nova categoria</a></li>
-                                <li><a href="#"><i class="fa fa-navicon"></i> Listar</a></li>
-                            </ul>
                         </li>
 
                         <li class="treeview">
@@ -254,7 +249,7 @@
                                     <form>
                                         <h3>Inserção de Marcas</h3>
                                         <fieldset class="form-group">
-                                            <label for="id">Descrição</label>
+                                            <label for="descricaoMarca">Descrição</label>
                                             <input type="text" class="form-control" id="descricaoMarca" placeholder="Descrição da Marca">
                                         </fieldset>
                                         <input type="button" onclick="inserirNovaMarca()" class="btn btn-primary" value="Inserir"/>

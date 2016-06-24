@@ -3091,7 +3091,7 @@
     };
 
     $.fn.fileinput.defaults = {
-        language: 'pt-BR',
+        language: 'en',
         showCaption: true,
         showBrowse: true,
         showPreview: true,
