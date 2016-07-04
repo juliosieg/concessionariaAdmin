@@ -11,6 +11,10 @@ $(document).ready(function () {
         })
     });
 
+    buscaCategoriasInsercao();
+    
+    buscaMarcasInsercao();
+
 });
 
 
@@ -149,6 +153,25 @@ function buscaCategoriasEdicao() {
     });
 }
 
+function buscaCategoriasInsercao() {
+    $.ajax({
+        type: "POST",
+        url: 'funcoes/funcoesCategorias.php',
+        data: {funcao: "getTodas"},
+        success: function (html) {
+            var test = jQuery.parseJSON(html);
+
+            $('#categoriaModelo').find('option').remove();
+            
+            $("#categoriaModelo").append("<option value=''>Selecione</option>");
+
+            $.each(test, function (i, item) {
+                $("#categoriaModelo").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
+            });
+        }
+    });
+}
+
 function buscaMarcasEdicao() {
     $.ajax({
         type: "POST",
@@ -161,6 +184,29 @@ function buscaMarcasEdicao() {
 
             $.each(test, function (i, item) {
                 $("#marcaEditarModelo").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
+            });
+
+        }
+
+    });
+
+}
+
+function buscaMarcasInsercao() {
+    $.ajax({
+        type: "POST",
+        url: 'funcoes/funcoesMarcas.php',
+        data: {funcao: "getTodas"},
+        success: function (html) {
+            var test = jQuery.parseJSON(html);
+
+            $('#marcaModelo').find('option').remove();
+
+            $("#marcaModelo").append("<option value=''>Selecione</option>");
+            
+
+            $.each(test, function (i, item) {
+                $("#marcaModelo").append("<option id=" + item.id + " descricao=" + item.descricao + ">" + item.descricao + "</option>")
             });
 
         }
@@ -202,7 +248,7 @@ function salvarAlteracoes() {
     if (descricao == "" || descricao == null) {
         $("#erroAlteracaoDescricaoVazia").show();
     } else {
-        
+
         var codigo = $("#idEditarModelo").val();
         var categoria = $("#categoriaEditarModelo option:selected").attr("id");
         var marca = $("#marcaEditarModelo option:selected").attr("id");

@@ -105,16 +105,11 @@
                         </li>
 
 
-                        <li class="treeview">
-                            <a href="#">
+                        <li>
+                            <a href="listarModelos.php">
                                 <i class="fa fa-bookmark-o"></i>
                                 <span>Modelos</span>
-                                <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="inserirModelos.php"><i class="fa fa-plus"></i> Novo modelo</a></li>
-                                <li><a href="listarModelos.php"><i class="fa fa-navicon"></i> Listar</a></li>
-                            </ul>
                         </li>
 
                         <li>
@@ -124,16 +119,11 @@
                             </a>
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
+                        <li>
+                            <a href="listarOpcionais.php">
                                 <i class="fa fa-check-circle-o"></i>
                                 <span>Opcionais</span>
-                                <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-plus"></i> Novo opcional</a></li>
-                                <li><a href="#"><i class="fa fa-navicon"></i> Listar</a></li>
-                            </ul>
                         </li>
 
                         <li>

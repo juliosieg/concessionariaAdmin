@@ -114,16 +114,11 @@
                         </li>
 
 
-                        <li class="treeview active">
-                            <a href="#">
+                        <li class="active">
+                            <a href="listarModelos.php">
                                 <i class="fa fa-bookmark-o"></i>
                                 <span>Modelos</span>
-                                <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="inserirModelos.php"><i class="fa fa-plus"></i> Novo modelo</a></li>
-                                <li class="active"><a href="listarModelos.php"><i class="fa fa-navicon"></i> Listar</a></li>
-                            </ul>
                         </li>
 
                         <li>
@@ -133,16 +128,11 @@
                             </a>
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
+                        <li>
+                            <a href="listarOpcionais.php">
                                 <i class="fa fa-check-circle-o"></i>
                                 <span>Opcionais</span>
-                                <i class="ion-ios-arrow-down pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-plus"></i> Novo opcional</a></li>
-                                <li><a href="#"><i class="fa fa-navicon"></i> Listar</a></li>
-                            </ul>
                         </li>
 
                         <li>
@@ -230,12 +220,11 @@
                 <section class="content-header">
 
                     <h1>
-                        Listagem de Modelos
+                        Modelos
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="index.php"><i class="fa fa-bookmark-o"></i>WHdev SGC</a></li>
                         <li class="active">Modelos</li>
-                        <li>Listar Modelos</li>
                     </ol>
                 </section>
 
@@ -247,6 +236,33 @@
                             <div class="box">
 
                                 <div class="box-body">
+
+                                    <form>
+                                        <h3>Inserção de Modelos</h3>
+                                        <fieldset class="form-group">
+                                            <label for="descricaoModelo">Descrição</label>
+                                            <input type="text" class="form-control" id="descricaoModelo" placeholder="Descrição do Modelo">
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+
+                                                    <label for="categoriaModelo">Categoria</label>
+                                                    <select class="form-control" id="categoriaModelo">
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    <label for="marcaModelo">Marca</label>
+                                                    <select class="form-control" id="marcaModelo"></select>
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <input type="button" onclick="inserirNovaMarca()" class="btn btn-primary" value="Inserir"/>
+                                    </form>
+
+                                    <h3>Listagem de Modelos</h3><br/>
 
                                     <table id="tableModelos" class="table table-bordered table-striped">
                                         <thead>
